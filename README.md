@@ -1,8 +1,10 @@
-# rmfakecloud
+# rmfakecloud - lrgabriel fork
 
 This is a replacement of the cloud, in case you want to sync/backup your files and have full control of the hosting environment.
 
 See the [project documentation](https://ddvk.github.io/rmfakecloud/) for setup and configuration.
+
+**I've forked this so that I can add v6 file support from joagonca**
 
 ## Supported Devices
 
