@@ -1,3 +1,704 @@
+# v0.0.1
+
+## Features
+
+- feat: replace upstream workflows with release and docker-build workflows
+- feat: passcode reset for rm1 and rm2 (#439)
+- feat: support for importing and exporting rmdocs. Closes #425
+- feat: support hashOfSchemaV4
+- feat: screenshare via mqtt
+
+## Bug Fixes
+
+- fix: RMAPI_HOST typo on welcome page (#437)
+- fix(ci): stop appending to 0.0.25 changelog (#432)
+- fix: generation 0 not accepted when root missing. Fixes #429
+- fix(integrations): add SupportedFileTypes to files for 3.25 support
+- fix: add /pair and /pair/app paths to connect
+- fix: default to hash schema v3
+- fix: device deregistration
+- fix: generate cert wih san names
+
+## Documentation
+
+- docs: 3.26 support (#436)
+- docs: update readme with 3.25 compatibility
+- docs: add paper pro move, update supported 3.22, mention no handwriting search support
+- docs: Add toc in menu
+- docs: how-to reenable tablet proxy after upgrades
+
+## Other Changes
+
+- Initial plan
+- Update README with fork information and v6 support
+- Sanitize document id in RemoveDocument to prevent path traversal
+- Fix fslock API: migrate remaining danjacques/gofslock calls to juju/fslock
+- go mod tidy: remove rmapi, unipdf, and unused dependencies
+- Remove confusing mention of automagic script
+- Remove cruft from reenable instructions
+- Fix Github action pipeline
+- Fix build process (forgot to update Makefile) Made CGo build more compliant
+- Removed legacy naming calls from rmapi
+- Dockerfile cleanup
+- Removed unipdf+rmcairo dependencies by changing to go-cairo
+- Added guide explaining how to set up mTLS with Cloudflare for secure external access
+- Clarify usage instructions in README
+- Removed important CSS tags
+- Some cleanup
+- Fix scroll bar issue on right pane
+- Fix panes height
+- Fix file tree height
+- Proper breadcrumb rendering
+- Render breadcrumb correctly
+- Sticky folder navigation
+- Added TanStack Table to file listing to enable ordering and other stuff
+- Addressing PR comments
+- Bump rmc-go to v1.1.1
+- Fix page ordering
+- Multipage v6 support
+- Fix StoreBlob not returning on lock error
+- Replace unmaintained juju/fslock with https://github.com/danjacques/gofslock
+- Mod tidy
+- Removed implementation details files
+- Removed Python legacy code
+- Implemented support for rmc-go library
+- Fix spelling mistake
+- Updated Dockerfile to add Python packages
+- Added debug logging lines
+- Prior detection of format
+- Added support to v6 format using external rmc tool
+- Update nginx.md
+- Mimic official cloud response on analytic route
+- Clean up flex spacer from inline style to SCSS class
+- Update filetree on change
+- Remove empty line
+- Implement delete checkbox for grid-view
+- Implement delete feature for list-view
+- Spelling + highlight software version for easier reading
+- Make the README more clear.
+- Prepare new release (software compatibility with 3.20)
+- Split CRC32C function in 2 distincts functions
+- Hash header is not limited to crc32c algorithm
+- go vet
+- New webhook messaging integration
+- Handle messaging integrations
+- Include new tectonic attribute in UserClaims
+- Bump vite from 5.4.11 to 5.4.19 in /ui
+- Bump golang.org/x/net from 0.36.0 to 0.38.0
+- Bump github.com/golang-jwt/jwt/v4 from 4.5.1 to 4.5.2
+- Include missing official Connect scopes
+- Add new metadata fields
+- Tested on 3.18.1
+- Add routes for v2 integrations
+- Bump golang.org/x/net from 0.23.0 to 0.36.0
+- Initialize "createdTime" metadata field
+- add support for overriding myscript hwr language
+- fix for #346 add dev telemetry route
+- Bump nanoid from 3.3.7 to 3.3.8 in /ui
+- Bump golang.org/x/crypto from 0.21.0 to 0.31.0
+- return correct document size (from hashtree)
+- update changelog
+- fix #345
+- docker workflow
+- dockhub build
+- docker workflow
+- codeql action v3
+- try to fix codeql warnings
+- Update go.mod
+- Update README.md
+- Update README.md
+- fix dockerfile
+- add change log
+- revert storage host change (used by old api < 3) as reported in #330
+- codeql action
+- codeql workflow
+- pnpm workflow
+- workflow steps
+- pnpm github action
+- fix dropdown warnings
+- vite
+- use pnpm and vite
+- Add batch upload script to ui
+- remove automagic instructions from docs, not working
+- - define error response for the ui - dont serialize integrations empty fields
+- Disallow adding/editing localfs integration from ui
+- Expose integration providers' name
+- ui: If error as return as json, parse them
+- - some fixes with upload control version - 404 instead of 500 on blob not found
+- integrations: Use int64 for file size
+- make sure static assets are cached and not reloaded
+- Add FTP integration
+- Add API routes to explore integrations content in ui
+- integrations: Add Size in return to download interface
+- Implement metadata retrieval for integrations
+- PUT /sync/v3/files/:ID doesn't return body
+- Stop flow if request is aborted
+- email: Add Date header
+- Reorder providers
+- ui: Add interface to manage integrations
+- fix js warnings
+- add missing files
+- - profile/reset per user - show user role in user list
+- update docs
+- some 3.15 warnings for STORAGE_URL
+- fix hooks
+- Don't modify yarn.lock
+- Rebuild yarn.lock from package.json
+- Update setup.md
+- disable ui tests
+- update workflow
+- - some minor ui fixes - update some js deps
+- go cleanup
+- check STORAGE_URL format on start fixes #310
+- update jwt
+- fix typo in docs apphost->appspot
+- fix typo in docs apphost->appspot
+- Bump webpack from 5.91.0 to 5.96.1 in /ui
+- - add crc32c headers for 3.15 - fix #327
+- Add local.apphost.com, address doc build warnings, fix formatting
+- Bump github.com/golang-jwt/jwt/v4 from 4.5.0 to 4.5.1
+- Bump http-proxy-middleware from 2.0.6 to 2.0.7 in /ui
+- sync/v4 expects to return an empty root instead of 404
+- UI: Refactor how files are represented & more
+- Extract NameTag into own component file
+- Show a throbber instead of text while uploading
+- UI: Bump react-arborist to 3.4.0
+- Add notes regarding upload functionality & rmapi
+- Add differentiability for selecting & opening/closing folders
+- Bump rollup from 2.79.1 to 2.79.2 in /ui
+- Fix files not auto refreshing on upload
+- Fix UI not using full screen width
+- add notification in update root
+- Tested with 3.14.1.9
+- Delete a lost yarn.lock file
+- Fix mobile file tree overlap
+- Fix uppercase extensions breaking upload
+- Move Upload.js to Documents
+- Update Home page tips
+- Move About page to Home page
+- Add a working drop area on Documents page
+- Moved most UI style rules to SCSS
+- Update UI About content
+- Update UI bootstrap dependencies
+- Move UI code to JSX
+- Upgrade UI dependencies
+- Bump micromatch from 4.0.5 to 4.0.8 in /ui
+- Bump golang.org/x/image from 0.15.0 to 0.18.0
+- New route for v3.13.1
+- Bump ws from 7.5.9 to 7.5.10 in /ui
+- Bump braces from 3.0.2 to 3.0.3 in /ui
+- Bump ejs from 3.1.9 to 3.1.10 in /ui
+- email: set reply-to header
+- Bump golang.org/x/net from 0.22.0 to 0.23.0
+- Create CONTRIBUTING.md
+- Create CODE_OF_CONDUCT.md
+- remove usages of ioutil
+- fix typo
+- update some npms
+- update go dependencies
+- some cleanup
+- Bump express from 4.18.2 to 4.19.2 in /ui
+- It is expected to return 404 instead of a null root hash
+- New routes for v3.10 compatibility
+- Bump follow-redirects from 1.15.2 to 1.15.6 in /ui
+- Bump google.golang.org/protobuf from 1.30.0 to 1.33.0
+- Clarify environment variables in docker doc
+- Tested on 3.9.3
+- If root file doesn't exists, this is because no file has been uploaded yet
+- route required by the new version of the iOS app
+- Bump golang.org/x/crypto from 0.14.0 to 0.17.0
+- Clarify a couple sentences in the docker docs
+- Bump @adobe/css-tools from 4.3.1 to 4.3.2 in /ui
+- Update to latest rmfakecloud-proxy release
+- Link to v6 rendering issue
+- Introduce a new user option: AdditionalScopes
+- Add a note about software release compatibility.
+- New route for 3.8 compatibility
+- Authentication scopes now depends on server config
+- Bump golang.org/x/image from 0.6.0 to 0.10.0
+- Bump @babel/traverse from 7.21.2 to 7.23.2 in /ui
+- Bump golang.org/x/net from 0.10.0 to 0.17.0
+- Add sync routes for v3.7
+- Mimic official rM JWT
+- Bump tough-cookie from 4.1.2 to 4.1.3 in /ui
+- file upload via button and tree update
+- added metadata to file list/grid
+- added modal for create folder
+- added drop to upload in filebrowser
+- minor improvements
+- file select across views
+- added more ux features
+- filelist css fixes
+- file list and grid
+- further improvements
+- file tree improvements and create folder
+- restored original proxy url
+- allow git head as version
+- filetree
+- further refactoring and ui improvements
+- used icon from react-icons
+- fixed password field type toggle with bootstrap 5
+- navigation cleanup, polished code generator
+- Bump @adobe/css-tools from 4.2.0 to 4.3.1 in /ui
+- Added note about GMail app passwords
+- Add support badges
+- Bump word-wrap from 1.2.3 to 1.2.4 in /ui
+- Bump semver from 6.3.0 to 6.3.1 in /ui
+- Add routes for sync v3.4
+- Bump github.com/gin-gonic/gin from 1.9.0 to 1.9.1
+- fix #229 dont return error
+- use ubuntu 20.04 runner
+- fix for #229, recreate corrupt hash tree
+- Update README.md
+- Bump webpack from 5.75.0 to 5.76.1 in /ui
+- fix build
+- update packages
+- Respond to the new discovery route, introduced in 3.2.2.1581
+- Bump golang.org/x/sys from 0.0.0-20220128215802-99c3d69c2c27 to 0.1.0
+- Document usage of history2git15 and relinkfile15
+- New utility able to relink lost file from an old tree (sync 1.5)
+- New utility to create a git repository of the tree history
+- Document the indexes of sync 1.5
+- SizeInBytes field is a string
+- workflow
+- workflow
+- workflow
+- workflow
+- dockerfile
+- workflow: typo
+- fix workflow
+- manual trigger
+- rename docker workflow
+- split workflows
+- Add send email route for v3
+- Add handwriting route for v3
+- don't show empty trash items
+- smoke test
+- try to disable some codeql rules
+- quickfix #197
+- Apply changes from review
+- Add tipp about how to use rmapi
+- tag the docker image
+- Update email settings according to STARTTLS tests
+- bugfixes
+- fix time parsing
+- sync 10 folder notification, refactor
+- add sync15 api routes and refactor
+- Adding new variables
+- Upgrade version
+- Adding pvc
+- Documentation about helm install
+- Persistence storage
+- Delete comments and moving variables
+- Adding environment variables
+- Small tutorial to create your user after installing
+- No need serviceaccount
+- Update version and description
+- Init helm chart
+- - fix email file extension #190 - add some curl tests
+- use sync15 for new users
+- add 1.5 sync urls
+- create /tmp in container fixes #182
+- ignore EraserAreas while exporting
+- fix build
+- Update Dockerfile
+- fixes documentation for listusers -- was missing trailins s
+- update npm dependencies
+- remove println
+- add new read on rm api, #67
+- fix lastmodified timestamp
+- Bump eventsource from 1.1.0 to 1.1.1 in /ui
+- Bump async from 2.6.3 to 2.6.4 in /ui
+- fix for #170 - add git to dockerfile
+- fix for #169, endless loop on empty server, ignore generation
+- fix for #145, set contentLength for sync1.5
+- Improve installation docs on the matter of URLs
+- fix docs systemd env file
+- current password -> email
+- Bump minimist from 1.2.5 to 1.2.6 in /ui
+- update docs: fix make sample config
+- fix for #157, initialize Files & Subfolders to empty slice
+- typo
+- Add apache reverse proxy
+- Bump url-parse from 1.5.4 to 1.5.10 in /ui
+- refactoring
+- Fix systemd unit example
+- sanitize inputs
+- smtp refactor
+- send empty thumbnails
+- reset form
+- created at local time, model validation
+- Bump follow-redirects from 1.14.7 to 1.14.8 in /ui
+- more management modal
+- inital workings of user profile management modal
+- make the Spinner card a common component
+- improve the user list style
+- put some padding around the main Switch component to let the content breath a bit
+- add basic date formatting for the user list
+- toast notifcation
+- parse RM_SMTP_FROM on start
+- use email address of the user
+- parse RM_SMTP_FROM on start
+- add fail2ban setup to docs
+- add trust proxy flag to docs
+- fix clientip behind proxy, pdf renderer, updated packages
+- update dockerfile, build ui only once
+- Document login procedure
+- update npm packages
+- #133 log ip of failed login
+- fix #138 aggressive uid sanitization breaks url signature
+- Bump nanoid from 3.1.30 to 3.2.0 in /ui
+- Bump follow-redirects from 1.14.5 to 1.14.7 in /ui
+- build: update go directive in go.mod to 1.17
+- Add warning about STARTTLS connections #131
+- Reorder doc and add some sections and how-to
+- Fix `docker build` issue by pegging to LTS version of `node` image.
+- Correct typo affecting info output of script.
+- Add script to download and modify reMarkable extension with rmfakecloud domain.
+- Add missing instruction
+- Formatting
+- Flush out source install docs
+- Update README.md
+- Update README.md
+- Fixing typo
+- Adding title for webdav and device
+- Pointing to setup.md instead of device.md
+- Changing device.md to setup.md and naming the variants
+- Update mkdocs.yml
+- Update docs/remarkable/device.md
+- Save old docs as backup
+- Editing docs
+- Update index.md
+- Update index.md
+- Update index.md
+- Update index.md
+- Delete _config.yml
+- Set theme jekyll-theme-leap-day
+- index text
+- Adding browser extension
+- Update mkdocs.yml
+- Add more to mkdocs
+- Theme change
+- Add navigation tab
+- Add navigations tabs
+- Add site name to mkdocs
+- Update mkdocs.yml
+- Update index.md
+- Setup mkdocs material theme
+- Testing the mkdocs
+- Create mkdocs workflow
+- cleanup logging config
+- Ensure JWT algorithm is the one expected during validation
+- fix token
+- fix ut
+- add localfs doc
+- refactor the IntegrationProvider
+- add local folder as integration
+- Allow development UI on different URL than localhost
+- Limit next/back buttons to valid pages
+- Update dev.sh to use bash instead of sh
+- Add license to package.json for UI
+- readme
+- dropbox wip
+- update yarn
+- webdav as 3rd party integration
+- add flag for secure cookies
+- make STORAGE_URL optional (use the local by default proxy)
+- Create browser-extension.md
+- print to rm, get the file extension #67
+- Add instructions for non x64 binaries
+- add disconnect route
+- web ext support
+- Update README.md
+- Correcting typo
+- remove some logs
+- Update https.md
+- Update tablet.md
+- Update https.md
+- ui refactoring, logging if in TLS
+- pdfjs stuff
+- file preview
+- add typescript
+- check blob urls read/write
+- invalidate token
+- tweak the workflow, remove build tags
+- ci
+- add js to ci
+- fix the ci
+- Append origin server to display account name
+- use go embed
+- errorf ut
+- dockerhub arm64
+- reduce warnings in cli
+- updated readme
+- some comments
+- update modules, read vfsgen
+- refactoring: move files around
+- update modules
+- Improve suggested nginx config
+- typo
+- sanitize blob query params
+- read size
+- move stuff around
+- pdf gen and sync token
+- update all packages
+- refactoring, use cookies for token storage
+- move files around
+- export blobs as pdf with annotations
+- ui upload
+- ui upload blobs
+- web ui sync15
+- update proxy installer in automagic script
+- more comments
+- logging
+- move sign methods
+- move storageapp to fs
+- signed urls
+- refactor generation
+- notifications
+- missing file
+- root generation
+- update dependencies
+- go mod file
+- new sync prototype
+- sync15
+- check token audience, add more scopes
+- Bump github.com/gin-gonic/gin from 1.6.3 to 1.7.0
+- update yarn, add scopes for screenshare
+- Bump dns-packet from 1.3.1 to 1.3.4 in /ui
+- update npm dependencies
+- readme
+- fix email subject encoding #53
+- add filename encoding in attachments
+- handle trash #48
+- fix oom, refactor config
+- Update tablet.md
+- add todo in readme
+- readme instructions
+- update build instructions
+- remove broken links from readme
+- fix missing dependency
+- remove some check for now
+- update dependencies
+- [ui] upload files
+- ui,readme clarifications
+- Create codeql-analysis.yml
+- markdown formatting
+- readme
+- https info
+- instruction clarifications
+- add arm64 target
+- fix openssl test command
+- readme
+- tweak argon params for low power devices
+- increase the temp url expiration time
+- readme, clarification
+- makefile
+- fix connection leak
+- increase storage token expiration
+- dont force console color
+- pr cleanup
+- new: added options to support tls directly
+- add some changes for 2.6, extracted the proxy installer into its own project
+- some experiments
+- lowercase one time code
+- log some requests
+- fix token for 2.6
+- fix token for 2.6
+- add url
+- additional dns name for hosts
+- code only alpha
+- token
+- makefile
+- make the linter happy
+- refactoring
+- set success to true
+- Set up CI with Azure Pipelines
+- Ensure Document list is created to avoid nil slice
+- undo changes in managerusers.go
+- user profile dropdown with reset password and logout,
+- fixed navigation, role handling
+- added user profile dropdown (profile, reset password, logout). only logout working
+- reduce verbosity
+- fix dockerfile
+- mod files
+- fix the dockerfile
+- add missing files
+- readme, instructions
+- refactor
+- create first user
+- fix ui error, change token
+- bugfix
+- user management WIP
+- updated cli to create user if the user does  not exist
+- fix tests
+- fix build
+- fix unit tests
+- fix asset generation
+- fix notifications
+- refactoring
+- cli list users
+- generate code
+- fix file download
+- admin middleware
+- ui
+- fix login
+- cli for user creation/password reset
+- add registration code
+- wip
+- ci for js branch
+- refactor ui routes
+- user paths
+- removed debugger statements
+- merged upstream and fixed user model reference.
+- added user profile
+- refactor handlers
+- added user list to display users
+- introduced component folders
+- error handling login form, errorboundary at app level
+- fix typo
+- add help flag for the available env config variables
+- move docker image building to release workflow
+- typo
+- get all commits
+- docker test
+- docker
+- add docker build
+- makefile refactoring
+- refactor makefile
+- add the ui tests
+- migrate to yarn
+- reverted rename of auth0
+- CORS, auth0 renamed to OAuth
+- ui update to use bearer authorization token received from backend
+- some refactoring
+- merge fix
+- document model updated. sample data added.
+- update packages
+- LoginForm, authentication state in localstorage, no backend call, private routes.
+- let there be cards.
+- added a few more dummy documents to be return from /ui/api/list
+- use CRLF as new line separator accordingt to RFC and requested by ddvk
+- Introduced line breaks after 76 characters in attachment
+- ui: New route to generate a new Code
+- config: new option to restrict registrations
+- ui: add API route to register and login
+- Rewrite auth middleware
+- ui: Fix opening of index.html
+- Handle users in filesystem
+- Fix metadata file permission: no need to have execution
+- ui: Send real documents list
+- Generate JWT tokens
+- refactor
+- refactoring ui
+- wip
+- Include ca-certificates in container to allow TLS communications
+- Use alpine base images to build container + some clean
+- Fix env var name
+- jwt token parsing
+- smtp: add RM_SMTP_INSECURE_TLS
+- smtp: add RM_SMTP_HELO for custom helo
+- ut fix
+- cleanup logging
+- fix #25 attachment names and normalize name
+- Update environment variables to match implementation
+- add cleanup script
+- readme formatting
+- adds more toubleshooting info, resinstall the root ca even if it exists
+- add https /reverse proxy docs, closes #20 #21
+- add multistage docker build #22
+- fix typo in readme
+- add release workflow
+- ci, set min go version to 1.15
+- fix trim order
+- trim addresses
+- force 1.13
+- kick the ci with 1.13
+- storage: Fix path to trash directory
+- smtp: Respect RM_SMTP_FROM override
+- smtp: Add last boundary delimeter to the message
+- README: Make SMTP settings more explicit
+- README: Document RM_SMTP_FROM override option
+- smtp: Fix typo in FROM override
+- README.md: Fix indentation
+- app: Use base64 RawURLEncoding to decode the JWT token
+- Add hwr-production-dot-remarkable-production.appspot.com to README instructions
+- fix for 2.4, make a real fake token
+- Update README.md
+- refactor install scripts
+- add readme
+- stop proxy first
+- scripts fixed
+- cert gen skip existing
+- device install scripts
+- replace log with logrus gin graceful shutdown
+- stupid error
+- refactor
+- refactoring ui
+- wip
+- add list component
+- ui
+- makefile cleanup
+- fix test
+- logging
+- check smtp config
+- update readme
+- update dependencies
+- add email sending
+- updated readme
+- add hwr support
+- some logging
+- use chunked encoding
+- log error
+- add missing files
+- refactoring
+- add main package
+- workflow
+- fix workflow
+- refactoring
+- fix dockerfile, change out dir to dist
+- fix port in dockerfile
+- fix out folder
+- fix cert names
+- create go.yml
+- fix readme formatting
+- updated readme
+- add docker file #1
+- display env variables
+- update readme
+- makefile add windows
+- update readme
+- makefile
+- minor refacoring
+- added todos
+- remove auth from service locator
+- refactor, fix geturl
+- remove expired certs, add generation script
+- remove disconnected clients
+- fix some leaks
+- more instructions
+- delete large files
+- fix script
+- updated readme
+- add missing files
+- fixed notification errors
+- restructure
+- fix hosts script
+- updated dependencies
+- readme
+- readme
+- wokring prototype
+- upload/list somewhat working
+- add dummy certs
+- readme
+- working
+- go api
+- add readme
+- add go
+- app
+- code
+- Initial commit
+
 # 0.0.25
 
 ## Features
