@@ -1,0 +1,63 @@
+name: Docker Build
+
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: 'Version number (e.g. 2.7.1, no leading v)'
+        required: false
+        type: string
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (e.g. 2.7.1, no leading v)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    name: Build and push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate tags
+        id: tags
+        run: |
+          sha_short="${GITHUB_SHA:0:7}"
+          repo="${{ github.repository }}"
+          tags="ghcr.io/${repo}:sha-${sha_short},ghcr.io/${repo}:latest"
+          if [ -n "${{ inputs.version }}" ]; then
+            tags="${tags},ghcr.io/${repo}:v${{ inputs.version }}"
+          fi
+          echo "tags=$tags" >> "$GITHUB_OUTPUT"
+          echo "sha_short=$sha_short" >> "$GITHUB_OUTPUT"
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.tags.outputs.tags }}
+          platforms: linux/amd64,linux/arm/v7,linux/arm64
+          build-args: |
+            VERSION=${{ inputs.version != '' && format('v{0}', inputs.version) || format('sha-{0}', steps.tags.outputs.sha_short) }}
